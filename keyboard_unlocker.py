@@ -12,7 +12,8 @@ GPIO.setup("CSID6", GPIO.OUT, initial=1)
 current_state=0
 unlock_time=0
 
-while True:     
+while True:
+          print("current state: ", current_state)
           if ((time.time()-unlock_time) < 5.0): 
                GPIO.output("CSID4", GPIO.LOW)
                GPIO.output("CSID6", GPIO.LOW)
@@ -24,11 +25,11 @@ while True:
           for event in events:
                print(event.ev_type, event.code, event.state)
                if event.state==1 :
-                    if current_state == 0 and event.code == 'KEY_1' :
+                    if current_state == 0 and event.code == 'KEY_D' :
                          current_state = 1
-                    elif current_state == 1 and event.code == 'KEY_2' :
+                    elif current_state == 1 and event.code == 'KEY_A' :
                          current_state = 2
-                    elif current_state == 2 and event.code == 'KEY_3' :
+                    elif current_state == 2 and event.code == 'KEY_N' :
                          current_state = 3
                          unlock_time = time.time()
                     else :
