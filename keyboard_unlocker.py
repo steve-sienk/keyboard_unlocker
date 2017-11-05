@@ -32,7 +32,7 @@ while True:
                          
           print('Current state: ', current_state)
           
-          if (time.time()-unlock_time < 30): 
+          if (time.time()-unlock_time < 5): 
                GPIO.output("CSID0", GPIO.LOW)
                GPIO.output("CSID2", GPIO.LOW)
                GPIO.output("CSID4", GPIO.LOW)
