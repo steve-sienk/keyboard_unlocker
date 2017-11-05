@@ -46,4 +46,4 @@ while True:
           
           
      except:
-          print("Unexpected error:", sys.exc_info()[0])
+          print("Error, maybe with keyboard")
