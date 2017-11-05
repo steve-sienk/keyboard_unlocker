@@ -13,7 +13,7 @@ GPIO.setup("CSID6", GPIO.OUT, initial=1)
 
 
 current_state=0
-unlock_time=0
+unlock_time=-30
 
 while True:
           events = get_key()
@@ -26,13 +26,13 @@ while True:
                          current_state = 2
                     elif current_state == 2 and event.code == 'KEY_3' :
                          current_state = 3
-                         unlock_time = time.localtime
+                         unlock_time = time.localtime()
                     else :
                          current_state = 0
                          
           print('Current state: ', current_state)
           
-          if (time.localtime-unlock_time < 30): 
+          if (time.localtime()-unlock_time < 30): 
                GPIO.output("CSID0", GPIO.LOW)
                GPIO.output("CSID2", GPIO.LOW)
                GPIO.output("CSID4", GPIO.LOW)
