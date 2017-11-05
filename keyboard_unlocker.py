@@ -1,3 +1,18 @@
+import CHIP_IO.GPIO as GPIO
+
+from inputs import get_key
+from inputs import devices
+for device in devices:
+     print(device)
+
+GPIO.setup("CSID0", GPIO.OUT, initial=1)
+GPIO.setup("CSID2", GPIO.OUT, initial=1)
+GPIO.setup("CSID4", GPIO.OUT, initial=1)
+GPIO.setup("CSID6", GPIO.OUT, initial=1)
+
+
+current_state=0
+
 while True:
      events = get_key()
      for event in events:
@@ -15,6 +30,12 @@ while True:
      print('Current state: ', current_state)
      
      if current_state == 3 : 
+          GPIO.output("CSID0", GPIO.LOW)
+          GPIO.output("CSID2", GPIO.LOW)
+          GPIO.output("CSID4", GPIO.LOW)
           GPIO.output("CSID6", GPIO.LOW)
      else :
+          GPIO.output("CSID0", GPIO.HIGH)
+          GPIO.output("CSID2", GPIO.HIGH)
+          GPIO.output("CSID4", GPIO.HIGH)
           GPIO.output("CSID6", GPIO.HIGH)
