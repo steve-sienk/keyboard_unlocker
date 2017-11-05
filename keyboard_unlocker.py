@@ -16,7 +16,6 @@ current_state=0
 unlock_time=0
 
 while True:
-     try:
           events = get_key()
           for event in events:
                print(event.ev_type, event.code, event.state)
@@ -33,7 +32,7 @@ while True:
                          
           print('Current state: ', current_state)
           
-          if current_state == 3 and (time.localtime-unlock_time < 20): 
+          if (time.localtime-unlock_time < 30): 
                GPIO.output("CSID0", GPIO.LOW)
                GPIO.output("CSID2", GPIO.LOW)
                GPIO.output("CSID4", GPIO.LOW)
@@ -43,7 +42,3 @@ while True:
                GPIO.output("CSID2", GPIO.HIGH)
                GPIO.output("CSID4", GPIO.HIGH)
                GPIO.output("CSID6", GPIO.HIGH)
-          
-          
-     except:
-          print("Error, maybe with keyboard")
