@@ -1,5 +1,5 @@
 #!/bin/sh
-variable=$(ps -ef | grep keyboard_unlocker | wc -l | awk '{print $1}')
+variable=$(ps -aux | grep keyboard_unlocker.py | wc -l | awk '{print $1}')
 echo $variable
 if [ $variable \< 2 ]
     then
